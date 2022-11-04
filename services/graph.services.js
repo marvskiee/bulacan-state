@@ -5,7 +5,7 @@ import {
 } from "./data.services";
 
 export const getAllStudent = async () => {
-  const res = await fetch("/api/student", {
+  const res = await fetch("/api/students", {
     method: "GET",
     headers: {
       Accept: "application/json",

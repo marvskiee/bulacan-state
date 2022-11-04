@@ -7,18 +7,6 @@ export default async (req, res) => {
   const { method } = req;
 
   switch (method) {
-    case "GET":
-      try {
-        const student = await Student.find();
-        res.status(200).json({
-          success: true,
-          data: student,
-        });
-      } catch (error) {
-        res.status(400).json({ success: false });
-      }
-      break;
-
     case "POST":
       try {
         const student = await Student.create(req.body);
