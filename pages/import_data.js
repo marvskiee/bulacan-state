@@ -96,7 +96,7 @@ const import_data = () => {
 
         break;
       case "number":
-        if (value.length < 6) {
+        if (value.length > 3) {
           console.log("fullname");
           return false;
         }
@@ -283,7 +283,14 @@ const import_data = () => {
       )}
       <div className="min-h-home z-10 flex items-center justify-center flex-col mx-7">
         <div className="max-h-home overflow-y-auto gap-4 flex flex-col rounded-lg bg-white p-8">
-          <p className="text-2xl font-semibold">Import Data</p>
+          <div className="flex items-center justify-between">
+            <p className="text-2xl font-semibold">Import Data</p>
+            <button className="p-2 px-4 bg-violet-500 text-white rounded-md">
+              <a target="_blank" href="excel_cheat_sheet.pdf">
+                Excel Format Cheat Sheet
+              </a>
+            </button>
+          </div>
           <label className="">
             Make sure to follow the instruction and content format of excel
             sheet or else it may show error. You may read in the tutorial on how

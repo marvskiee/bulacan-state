@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { GraphBar, GraphCard, ModalLayout, Navbar } from "../components";
-import { dotCount } from "../services/graph.services";
+import { averageCount, dotCount } from "../services/graph.services";
 
 const Graph = () => {
   const [bar, setBar] = useState([]);
+  const [average, setAverage] = useState([
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+  ]);
   useEffect(async () => {
     const dots = await dotCount();
     const overallDots = dots.black + dots.green + dots.red;
@@ -13,6 +18,10 @@ const Graph = () => {
       Math.round((dots.red / overallDots) * 100),
       Math.round((dots.green / overallDots) * 100),
     ]);
+    const res = await averageCount();
+    if (res) {
+      setAverage(res);
+    }
   }, []);
   const [modalMode, setModalMode] = useState(-1);
   return (
@@ -20,7 +29,7 @@ const Graph = () => {
       <Navbar title="Cluster Graph" />
       {modalMode > -1 && (
         <ModalLayout>
-          <GraphCard mode={modalMode} bar={bar} />
+          <GraphCard mode={modalMode} bar={bar} average={average[modalMode]} />
           <div className="flex items-center justify-end mt-4">
             <button
               onClick={() => setModalMode(-1)}
