@@ -4,15 +4,15 @@ function Cluster() {
 Cluster.prototype.init = function (green, black, red) {
   let color = { green: "#059669", black: "#111827", red: "#e11d48" };
   // format [number of nodes, color, xCentroids, yCentroids]
-  this.generateCircles(black, color.black, "black");
-  this.generateCircles(red, color.black, "red");
-  this.generateCircles(green, color.black, "green");
+  if (black != 0) this.generateCircles(black, "black");
+  if (red != 0) this.generateCircles(red, "red");
+  if (green != 0) this.generateCircles(green, "green");
 };
-Cluster.prototype.generateCircles = function (num, color, name) {
+Cluster.prototype.generateCircles = function (num, name) {
   let counter = 1;
   let radius = 2;
-  let width = 100;
-  let height = 40;
+  // let width = 100;
+  // let height = 40;
   while (true) {
     const circle = document.createElementNS(
       "http://www.w3.org/2000/svg",

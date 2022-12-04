@@ -33,21 +33,27 @@ const import_data = () => {
   // header checker
   const headerChecker = (datas) => {
     let refDatas = [
-      "fullname",
-      "year",
-      "email",
-      "province",
-      "municipality",
+      // "fullname",
+      // "year",
+      // "email",
+      // "province",
+      // "municipality",
       "number",
-      "classification",
-      "section",
+      // "classification",
+      // "section",
       "programming 1",
+      "p1 grade",
       "programming 2",
+      "p2 grade",
       "oop 1",
+      "oop1 grade",
       "oop 2",
+      "oop2 grade",
       "das",
+      "das grade",
     ];
     for (let d in datas) {
+      // console.log(datas[d]);
       if (datas[d] != refDatas[d]) {
         return false;
       }
@@ -56,60 +62,70 @@ const import_data = () => {
   };
   const dataChecker = (field, value, support) => {
     switch (field) {
-      case "fullname":
-        if (value.length < 3) {
-          console.log("fullname");
-          return false;
-        }
-        break;
-      case "section":
-        if (support == "3rd" && !year3Choices.includes(value)) {
-          console.log("fullname");
-          return false;
-        } else if (support == "4th" && !year4Choices.includes(value)) {
-          console.log("fullname");
-          return false;
-        }
-        break;
-      case "email":
-        if (value.length < 6 || !value.includes("@") || !value.includes(".")) {
-          console.log("fullname");
+      // case "fullname":
+      //   if (value.length < 3) {
+      //     console.log("fullname");
+      //     return false;
+      //   }
+      //   break;
+      // case "section":
+      //   if (support == "3rd" && !year3Choices.includes(value)) {
+      //     console.log("fullname");
+      //     return false;
+      //   } else if (support == "4th" && !year4Choices.includes(value)) {
+      //     console.log("fullname");
+      //     return false;
+      //   }
+      //   break;
+      // case "email":
+      //   if (value.length < 6 || !value.includes("@") || !value.includes(".")) {
+      //     console.log("fullname");
 
-          return false;
-        }
-        break;
-      case "province":
-        if (value.length < 6 || (value !== "Bulacan" && value != "Pampanga")) {
-          console.log("fullname");
-          return false;
-        }
-        break;
-      case "municipality":
-        if (support == "Bulacan" && !bulacanChoices.includes(value)) {
-          console.log("fullname");
-          return false;
-        } else if (support == "Pampanga" && !pampangaChoices.includes(value)) {
-          console.log("fullname");
-          console.log(support);
-          return false;
-        }
+      //     return false;
+      //   }
+      //   break;
+      // case "province":
+      //   if (value.length < 6 || (value !== "Bulacan" && value != "Pampanga")) {
+      //     console.log("fullname");
+      //     return false;
+      //   }
+      //   break;
+      // case "municipality":
+      //   if (support == "Bulacan" && !bulacanChoices.includes(value)) {
+      //     console.log("fullname");
+      //     return false;
+      //   } else if (support == "Pampanga" && !pampangaChoices.includes(value)) {
+      //     console.log("fullname");
+      //     console.log(support);
+      //     return false;
+      //   }
 
-        break;
+      //   break;
       case "number":
         if (value.length > 3) {
           console.log("fullname");
           return false;
         }
         break;
-      case "classification":
-        if (value.length < 6 || !classificationChoices.includes(value)) {
-          console.log("fullname");
-          return false;
-        }
-        break;
-      case "year":
-        if (!yearChoices.includes(value)) {
-          console.log(value);
+      // case "classification":
+      //   if (value.length < 6 || !classificationChoices.includes(value)) {
+      //     console.log("fullname");
+      //     return false;
+      //   }
+      //   break;
+      // case "year":
+      //   if (!yearChoices.includes(value)) {
+      //     console.log(value);
+      //     return false;
+      //   }
+      //   break;
+      case "p1 grade":
+      case "p2 grade":
+      case "oop1 grade":
+      case "oop2 grade":
+      case "das grade":
+        if (!gradeChoices.includes(value)) {
+          // console.log("fullname");
           return false;
         }
         break;
@@ -118,23 +134,19 @@ const import_data = () => {
       case "oop 1":
       case "oop 2":
       case "das":
-        let list = value.split(",");
-        if (list.length != 2) {
-          console.log("fullname");
+        // let list = value.split(",");
+        // if (list.length != 2) {
+        //   // console.log("fullname");
+        //   return false;
+        // } else {
+        if (!scheduleChoices.includes(value)) {
+          // console.log("fullname");
           return false;
-        } else {
-          if (!gradeChoices.includes(list[1])) {
-            console.log("fullname");
-            return false;
-          }
-          if (!scheduleChoices.includes(list[0])) {
-            console.log("fullname");
-            return false;
-          }
         }
+        // }
         break;
       default:
-        console.log("fullname");
+        // console.log("fullname");
         return false;
     }
     return true;
@@ -155,34 +167,49 @@ const import_data = () => {
         let childTemp = {};
         for (let t in targetArray) {
           childTemp[keys[t]] = targetArray[t];
-          if (!dataChecker(keys[t], targetArray[t])) {
-            setSuccessRead(1);
-            setData(null);
-            return;
-          }
-          if (keys[t] == "municipality") {
-            if (!dataChecker(keys[t], targetArray[t], childTemp["province"])) {
-              setSuccessRead(1);
-              setData(null);
-              return;
-            }
-          }
-          if (keys[t] == "section") {
-            if (!dataChecker(keys[t], targetArray[t], childTemp["year"])) {
-              setSuccessRead(1);
-              setData(null);
-              return;
-            }
-          }
+          // console.log(targetArray[t]);
+          // if (keys[t] == "municipality") {
+          //   if (!dataChecker(keys[t], targetArray[t])) {
+          //     setSuccessRead(1);
+          //     setData(null);
+          //     return;
+          //   }
+          // }
+          //   if (keys[t] == "municipality") {
+          //     if (!dataChecker(keys[t], targetArray[t], childTemp["province"])) {
+          //       setSuccessRead(1);
+          //       setData(null);
+          //       return;
+          //     }
+          //   }
+          //   if (keys[t] == "section") {
+          //     if (!dataChecker(keys[t], targetArray[t], childTemp["year"])) {
+          //       setSuccessRead(1);
+          //       setData(null);
+          //       return;
+          //     }
+          //   }
         }
-        let programming1 = childTemp["programming 1"].toString().split(",");
-        let programming2 = childTemp["programming 2"].toString().split(",");
-        let oop1 = childTemp["oop 1"].toString().split(",");
-        let opo2 = childTemp["oop 2"].toString().split(",");
-        let das = childTemp["das"].toString().split(",");
+        let programming1 = childTemp["programming 1"];
+        let programming2 = childTemp["programming 2"];
+        let oop1 = childTemp["oop 1"];
+        let oop2 = childTemp["oop 2"];
+        let das = childTemp["das"];
 
-        childTemp["subjects"] = [programming1, programming2, oop1, opo2, das];
+        let p1_grade = childTemp["p1 grade"];
+        let p2_grade = childTemp["p2 grade"];
+        let oop1_grade = childTemp["oop1 grade"];
+        let oop2_grade = childTemp["oop2 grade"];
+        let das_grade = childTemp["das grade"];
 
+        childTemp["subjects"] = [
+          [programming1, p1_grade],
+          [programming2, p2_grade],
+          [oop1, oop1_grade],
+          [oop2, oop2_grade],
+          [das, das_grade],
+        ];
+        console.log(childTemp);
         parentTemp = [...parentTemp, childTemp];
       }
     }
@@ -213,25 +240,25 @@ const import_data = () => {
     let newData = [];
     for (let d in datas) {
       const {
-        fullname,
-        section,
-        email,
-        province,
-        municipality,
+        // fullname,
+        // section,
+        // email,
+        // province,
+        // municipality,
         number,
-        classification,
-        year,
+        // classification,
+        // year,
         subjects,
       } = data[d];
       const tmData = {
-        fullname,
-        section,
-        email,
-        province,
-        municipality,
+        // fullname,
+        // section,
+        // email,
+        // province,
+        // municipality,
         number,
-        classification,
-        year,
+        // classification,
+        // year,
         subjects,
       };
       newData = [...newData, tmData];
@@ -244,7 +271,7 @@ const import_data = () => {
           // setData(newData.splice(1));
           tmp_logs = [
             ...tmp_logs,
-            `Student name ${newData[i].fullname} has been added!`,
+            `Student number ${newData[i].number} has been added!`,
           ];
         } else {
           if (res.errors.code == 11000) {
@@ -252,7 +279,7 @@ const import_data = () => {
             if (res.success) {
               tmp_logs = [
                 ...tmp_logs,
-                `Student name ${newData[i].fullname} has been updated!`,
+                `Student number ${newData[i].number} has been updated!`,
               ];
             }
           }
@@ -277,7 +304,7 @@ const import_data = () => {
   };
   return (
     <>
-      <Navbar title="Import Data" />
+      <Navbar title="Import Data" script={true} />
       {modalSuccess != 0 && (
         <SuccessModal handler={setModalSuccess} mode={modalSuccess} />
       )}

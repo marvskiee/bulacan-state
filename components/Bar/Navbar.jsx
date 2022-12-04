@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { HeaderLayout } from "../../components";
 
-const Navbar = ({ title }) => {
+const Navbar = ({ title, script }) => {
   const links = [
     {
       name: "Import Data",
@@ -23,7 +23,7 @@ const Navbar = ({ title }) => {
   ];
   return (
     <>
-      <HeaderLayout title={title} />
+      <HeaderLayout title={title} script={script} />
       <div>
         <div className="p-4 flex items-center justify-between bg-black/80 w-full text-white sticky top-0">
           <input type="checkbox" id="burger" className="hidden" />

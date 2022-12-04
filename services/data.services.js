@@ -85,6 +85,11 @@ export const year4Choices = [
 export const classificationChoices = ["Regular", "Irregular"];
 export const gradeChoices = [
   "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
   "1.00",
   "1.25",
   "1.50",

@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { GraphBar, GraphCard, ModalLayout, Navbar } from "../components";
+import {
+  GraphBar,
+  GraphCard,
+  LegendLayout,
+  ModalLayout,
+  Navbar,
+} from "../components";
 import { averageCount, dotCount } from "../services/graph.services";
 
 const Graph = () => {
@@ -12,12 +18,16 @@ const Graph = () => {
   useEffect(async () => {
     const dots = await dotCount();
     const overallDots = dots.black + dots.green + dots.red;
-    setBar([
-      ...bar,
-      Math.round((dots.black / overallDots) * 100),
-      Math.round((dots.red / overallDots) * 100),
-      Math.round((dots.green / overallDots) * 100),
-    ]);
+    if (overallDots == 0) {
+      setBar([...bar, 0, 0, 0]);
+    } else {
+      setBar([
+        ...bar,
+        Math.round((dots.black / overallDots) * 100),
+        Math.round((dots.red / overallDots) * 100),
+        Math.round((dots.green / overallDots) * 100),
+      ]);
+    }
     const res = await averageCount();
     if (res) {
       setAverage(res);
@@ -45,24 +55,8 @@ const Graph = () => {
           <p className="text-2xl font-semibold mb-4 text-center">
             Cluster Graph
           </p>
-          <div className="flex items-center justify-center gap-10 sm:flex-row flex-col ">
-            <div className="flex flex-col gap-4">
-              <p className="text-center font-semibold text-2xl">Legend</p>
-              <div className="flex gap-2 flex-col">
-                <div className="flex items-center gap-2">
-                  <span className="w-4 h-4 bg-black block"></span>
-                  <p className="uppercase font-semibold">morning schedules</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-4 h-4 bg-rose-600 block"></span>
-                  <p className="uppercase font-semibold">afternoon schedules</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-4 h-4 bg-emerald-600 block"></span>
-                  <p className="uppercase font-semibold">evening schedules</p>
-                </div>
-              </div>
-            </div>
+          <div className="flex items-end justify-center gap-10 sm:flex-row flex-col ">
+            <LegendLayout />
             <div className="flex w-62 h-62 gap-4 border-b border-black px-2">
               <a className="cursor-pointer" onClick={() => setModalMode(0)}>
                 <div className="bg-black w-20 h-80">

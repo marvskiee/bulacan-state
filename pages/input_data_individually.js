@@ -21,12 +21,12 @@ const input_data_individually = () => {
 
   const [modalSuccess, setModalSuccess] = useState(0);
   const [updateModal, setUpdateModal] = useState();
-  const fullnameRef = useRef();
-  const sectionRef = useRef();
-  const emailRef = useRef();
-  const municipalityRef = useRef();
+  // const fullnameRef = useRef();
+  // const sectionRef = useRef();
+  // const emailRef = useRef();
+  // const municipalityRef = useRef();
   const numberRef = useRef();
-  const classificationRef = useRef();
+  // const classificationRef = useRef();
   // gradesRef
   const grade1Ref = useRef();
   const grade2Ref = useRef();
@@ -111,14 +111,14 @@ const input_data_individually = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     const newData = {
-      fullname: fullnameRef.current?.value,
-      section: sectionRef.current?.value,
-      email: emailRef.current?.value,
-      province,
-      year,
-      municipality: municipalityRef.current?.value,
+      // fullname: fullnameRef.current?.value,
+      // section: sectionRef.current?.value,
+      // email: emailRef.current?.value,
+      // province,
+      // year,
+      // municipality: municipalityRef.current?.value,
       number: numberRef.current?.value,
-      classification: classificationRef.current?.value,
+      // classification: classificationRef.current?.value,
       subjects: [
         [sched1Ref.current?.value, grade1Ref.current?.value],
         [sched2Ref.current?.value, grade2Ref.current?.value],
@@ -148,15 +148,15 @@ const input_data_individually = () => {
     }
   };
   const clearFormHandler = () => {
-    fullnameRef.current.value = "";
-    sectionRef.current.value = "";
-    emailRef.current.value = "";
-    setProvince("Bulacan");
-    setYear("3rd");
-    sectionRef.current.value = "A-G1, A-G2";
-    municipalityRef.current.value = "Angat";
+    // fullnameRef.current.value = "";
+    // sectionRef.current.value = "";
+    // emailRef.current.value = "";
+    // setProvince("Bulacan");
+    // setYear("3rd");
+    // sectionRef.current.value = "A-G1, A-G2";
+    // municipalityRef.current.value = "Angat";
     numberRef.current.value = "";
-    classificationRef.current.value = "Regular";
+    // classificationRef.current.value = "Regular";
     // // subjects: [
     sched1Ref.current.value = "--";
     grade1Ref.current.value = "0";
@@ -209,7 +209,7 @@ const input_data_individually = () => {
         </ModalLayout>
       )}
       <div className="min-h-data z-10 flex items-center justify-center flex-col mx-7">
-        <div className="max-h-home overflow-y-auto gap-4 flex flex-col rounded-lg bg-white p-8">
+        <div className="overflow-y-auto gap-4 flex flex-col rounded-lg sm:w-auto w-full bg-white p-8">
           <form method="POST" className="w-full" onSubmit={submitHandler}>
             {/* <p className=" text-center mb-4 bg-emerald-500 text-white p-2 rounded-md font-semibold">
               Student data has been added successfully!
@@ -220,11 +220,27 @@ const input_data_individually = () => {
             <p className=" text-center mb-4 bg-rose-500 text-white p-2 rounded-md font-semibold">
               Something went wrong, Please try again!
             </p> */}
-            <div className="flex gap-4 flex-col xl:flex-row">
+            <div className="flex gap-4 flex-col">
               <div id="page1">
                 <p className="text-2xl font-semibold mb-4">Student Profile</p>
-                <div className="flex gap-4 sm:flex-row flex-col">
-                  <div className="flex gap-4 flex-col">
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="student_number"
+                    className="font-semibold uppercase"
+                  >
+                    Student Number:
+                  </label>
+                  <input
+                    ref={numberRef}
+                    required
+                    type="number"
+                    className="px-4 p-2 rounded-md border"
+                    id="student_number"
+                    placeholder="10000132667"
+                  />
+                </div>
+                {/* <div className="flex gap-4 sm:flex-row flex-col"> */}
+                {/* <div className="flex gap-4 flex-col">
                     <div className="flex flex-col gap-2">
                       <label
                         htmlFor="flname"
@@ -282,9 +298,9 @@ const input_data_individually = () => {
                         placeholder="johndoe@gmail.com"
                       />
                     </div>
-                  </div>
-                  <div className="flex gap-4 flex-col">
-                    <div className="flex flex-col gap-2">
+                  </div> */}
+                {/* <div className="flex gap-4 flex-col"> */}
+                {/* <div className="flex flex-col gap-2">
                       <label
                         htmlFor="province"
                         className="font-semibold uppercase"
@@ -311,24 +327,10 @@ const input_data_individually = () => {
                         Municipality:
                       </label>
                       {municipalityComboBox()}
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <label
-                        htmlFor="student_number"
-                        className="font-semibold uppercase"
-                      >
-                        Student Number:
-                      </label>
-                      <input
-                        ref={numberRef}
-                        required
-                        type="number"
-                        className="px-4 p-2 rounded-md border"
-                        id="student_number"
-                        placeholder="10000132667"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-2">
+                    </div> */}
+                {/* student number  */}
+
+                {/* <div className="flex flex-col gap-2">
                       <label
                         htmlFor="classification"
                         className="font-semibold uppercase"
@@ -344,77 +346,109 @@ const input_data_individually = () => {
                         <option value="Regular">Regular</option>
                         <option value="Irregular">Irregular</option>
                       </select>
+                    </div> */}
+                {/* </div> */}
+                {/* </div> */}
+              </div>
+              <div className="sm:flex-row flex-col flex gap-5">
+                <div id="page2">
+                  <p className="text-2xl font-semibold mb-4">Input Grades</p>
+                  <div className="gap-4 flex flex-col">
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="grade1"
+                        className="font-semibold uppercase"
+                      >
+                        Programming 1
+                      </label>
+                      {gradesComboBox("grade1", grade1Ref)}
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="grade2"
+                        className="font-semibold uppercase"
+                      >
+                        Programming 2
+                      </label>
+                      {gradesComboBox("grade2", grade2Ref)}
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="grade3"
+                        className="font-semibold uppercase"
+                      >
+                        Object Programming 1
+                      </label>
+                      {gradesComboBox("grade3", grade3Ref)}
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="grade4"
+                        className="font-semibold uppercase"
+                      >
+                        Object Programming 2
+                      </label>
+                      {gradesComboBox("grade4", grade4Ref)}
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="grade5"
+                        className="font-semibold uppercase"
+                      >
+                        Data Structure and Algorithm
+                      </label>
+                      {gradesComboBox("grade5", grade5Ref)}
                     </div>
                   </div>
                 </div>
-              </div>
-              <div id="page2">
-                <p className="text-2xl font-semibold mb-4">Input Grades</p>
-                <div className="gap-4 flex flex-col">
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="grade1" className="font-semibold uppercase">
-                      Programming 1
-                    </label>
-                    {gradesComboBox("grade1", grade1Ref)}
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="grade2" className="font-semibold uppercase">
-                      Programming 2
-                    </label>
-                    {gradesComboBox("grade2", grade2Ref)}
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="grade3" className="font-semibold uppercase">
-                      Object Programming 1
-                    </label>
-                    {gradesComboBox("grade3", grade3Ref)}
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="grade4" className="font-semibold uppercase">
-                      Object Programming 2
-                    </label>
-                    {gradesComboBox("grade4", grade4Ref)}
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="grade5" className="font-semibold uppercase">
-                      Data Structure and Algorithm
-                    </label>
-                    {gradesComboBox("grade5", grade5Ref)}
-                  </div>
-                </div>
-              </div>
-              <div id="page3">
-                <p className="text-2xl font-semibold mb-4">Input Schedules</p>
-                <div className="gap-4 flex flex-col">
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="sched1" className="font-semibold uppercase">
-                      Programming 1
-                    </label>
-                    {schedulesComboBox("sched1", sched1Ref)}
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="sched2" className="font-semibold uppercase">
-                      Programming 2
-                    </label>
-                    {schedulesComboBox("sched2", sched2Ref)}
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="sched3" className="font-semibold uppercase">
-                      Object Programming 1
-                    </label>
-                    {schedulesComboBox("sched3", sched3Ref)}
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="sched4" className="font-semibold uppercase">
-                      Object Programming 2
-                    </label>
-                    {schedulesComboBox("sched4", sched4Ref)}
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="sched5" className="font-semibold uppercase">
-                      Data Structure and Algorithm
-                    </label>
-                    {schedulesComboBox("sched5", sched5Ref)}
+                <div id="page3">
+                  <p className="text-2xl font-semibold mb-4">Input Schedules</p>
+                  <div className="gap-4 flex flex-col">
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="sched1"
+                        className="font-semibold uppercase"
+                      >
+                        Programming 1
+                      </label>
+                      {schedulesComboBox("sched1", sched1Ref)}
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="sched2"
+                        className="font-semibold uppercase"
+                      >
+                        Programming 2
+                      </label>
+                      {schedulesComboBox("sched2", sched2Ref)}
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="sched3"
+                        className="font-semibold uppercase"
+                      >
+                        Object Programming 1
+                      </label>
+                      {schedulesComboBox("sched3", sched3Ref)}
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="sched4"
+                        className="font-semibold uppercase"
+                      >
+                        Object Programming 2
+                      </label>
+                      {schedulesComboBox("sched4", sched4Ref)}
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="sched5"
+                        className="font-semibold uppercase"
+                      >
+                        Data Structure and Algorithm
+                      </label>
+                      {schedulesComboBox("sched5", sched5Ref)}
+                    </div>
                   </div>
                 </div>
               </div>

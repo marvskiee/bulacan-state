@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Script from "next/script";
-const HeaderLayout = ({ title }) => {
+const HeaderLayout = ({ title, script }) => {
   return (
     <>
       <Head>
@@ -17,7 +17,9 @@ const HeaderLayout = ({ title }) => {
         />
         <title>{title} Bulacan State University</title>
       </Head>
-      <Script src="https://unpkg.com/read-excel-file@4.x/bundle/read-excel-file.min.js" />
+      {script && (
+        <Script src="https://unpkg.com/read-excel-file@4.x/bundle/read-excel-file.min.js" />
+      )}
     </>
   );
 };

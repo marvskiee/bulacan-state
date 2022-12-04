@@ -14,6 +14,6 @@ module.exports = {
   optimizeFonts: false,
   env: {
     MONGO_URI:
-      "mongodb+srv://marvs:marvs@cluster0.q9ufs43.mongodb.net/?retryWrites=true&w=majority",
+      "mongodb+srv://mar:ilZ56v8fmFJncMCJ@cluster0.cixtogj.mongodb.net/?retryWrites=true&w=majority",
   },
 };
