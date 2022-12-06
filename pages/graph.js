@@ -55,7 +55,7 @@ const Graph = () => {
           <p className="text-2xl font-semibold mb-4 text-center">
             Cluster Graph
           </p>
-          <div className="flex items-end justify-center gap-10 sm:flex-row flex-col ">
+          <div className="flex sm:items-end items-center justify-center gap-10 sm:flex-row flex-col-reverse ">
             <LegendLayout />
             <div className="flex w-62 h-62 gap-4 border-b border-black px-2">
               <a className="cursor-pointer" onClick={() => setModalMode(0)}>

@@ -21,7 +21,7 @@ const Visualization = () => {
       <div className="min-h-home z-10 flex items-center justify-center flex-col mx-7">
         <div className="flex flex-col rounded-lg bg-white p-8 items-center justify-center">
           <p className="text-2xl font-semibold mb-4">Cluster Visualization</p>
-          <div className="flex items-end justify-center gap-10 sm:flex-row flex-col ">
+          <div className="flex sm:items-end items-center justify-center gap-10 sm:flex-row flex-col-reverse ">
             <LegendLayout />
             <div className="w-96 h-96">
               <svg id="canvas" viewBox="0 0 400 400" className="w-96 h-96">
