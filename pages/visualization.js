@@ -19,12 +19,12 @@ const Visualization = () => {
     <>
       <Navbar title="Cluster Visualization" />
       <div className="min-h-home z-10 flex items-center justify-center flex-col mx-7">
-        <div className="flex flex-col rounded-lg bg-white p-8 items-center justify-center">
+        <div className="flex flex-col rounded-lg bg-white p-8 items-center justify-center h-auto sm:h-screen  sm:max-h-home">
           <p className="text-2xl font-semibold mb-4">Cluster Visualization</p>
-          <div className="flex sm:items-end items-center justify-center gap-10 sm:flex-row flex-col-reverse ">
+          <div className="h-full pb-4 w-full flex sm:items-end items-center justify-center gap-10 sm:flex-row flex-col-reverse ">
             <LegendLayout />
-            <div className="w-96 h-96">
-              <svg id="canvas" viewBox="0 0 400 400" className="w-96 h-96">
+            <div className="w-full h-full">
+              <svg id="canvas" viewBox="0 0 400 400" className="w-full h-full">
                 <line
                   x1="-20"
                   y1="0"

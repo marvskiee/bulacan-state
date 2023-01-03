@@ -18,6 +18,10 @@ Cluster.prototype.generateCircles = function (num, name) {
       "http://www.w3.org/2000/svg",
       "circle"
     );
+    circle.addEventListener("hover", function () {
+      console.log("this");
+    });
+    circle.innerHTML = `<title>I'm a circle</title>`;
     this.canvas?.appendChild(circle);
     this.canvas?.appendChild(circle);
     this.setAttributeList(circle, {
