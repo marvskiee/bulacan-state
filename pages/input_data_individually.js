@@ -180,29 +180,28 @@ const input_data_individually = () => {
         <ModalLayout>
           <div className="flex gap-4 flex-col">
             <p className="bg-rose-100 text-center text-rose-500 p-2 px-4 rounded-md border border-dashed border-rose-500">
-              The student number is already exist. Do you want to update
-              instead?
+              The student number is already exist.
             </p>
-            <p className="text-center bg-blue-100 text-blue-500 p-2 px-4 rounded-md border border-dashed border-blue-500">
+            {/* <p className="text-center bg-blue-100 text-blue-500 p-2 px-4 rounded-md border border-dashed border-blue-500">
               Old Data
             </p>
             {oldData && <StudentCard fields={oldData} index={0} />}
             <p className="text-center bg-blue-100 text-blue-500 p-2 px-4 rounded-md border border-dashed border-blue-500">
               New Data
             </p>
-            {data && <StudentCard fields={data} index={0} />}
+            {data && <StudentCard fields={data} index={0} />} */}
             <div className="flex items-center justify-end gap-4">
-              <button
+              {/* <button
                 onClick={() => updateHandler()}
                 className="rounded-md text-white px-4 p-2 bg-blue-500"
               >
                 Continue
-              </button>
+              </button> */}
               <button
                 onClick={() => setUpdateModal(false)}
                 className="rounded-md text-white px-4 p-2 bg-slate-500"
               >
-                Cancel
+                Close
               </button>
             </div>
           </div>
