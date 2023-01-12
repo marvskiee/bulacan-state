@@ -180,7 +180,7 @@ const input_data_individually = () => {
         <ModalLayout>
           <div className="flex gap-4 flex-col">
             <p className="bg-rose-100 text-center text-rose-500 p-2 px-4 rounded-md border border-dashed border-rose-500">
-              The student number is already exist.
+              The student number already exists.
             </p>
             {/* <p className="text-center bg-blue-100 text-blue-500 p-2 px-4 rounded-md border border-dashed border-blue-500">
               Old Data
